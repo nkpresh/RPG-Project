@@ -17,7 +17,7 @@ namespace RPG.Control
 
         private void Update()
         {
-            if (InteractWithCombat()) return;
+            if (!InteractWithCombat()) return;
             InteractWithMovement();
         }
 

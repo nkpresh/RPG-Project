@@ -17,7 +17,6 @@ namespace RPG.Movement
             agent = GetComponent<NavMeshAgent>();
         }
 
-        // Update is called once per frame
         void Update()
         {
 
@@ -25,6 +24,15 @@ namespace RPG.Movement
             UpdateAnimator();
             //Debug.DrawRay(lastRay.origin, lastRay.direction*100);
             //agent.destination=target.position;
+            // if (Vector3.Distance(transform.position, target.position) <= 2)
+            // {
+            //     Stop();
+            // }
+        }
+
+        public void Stop()
+        {
+            agent.isStopped = true;
         }
 
         // private void MoveToCursor()
@@ -41,6 +49,7 @@ namespace RPG.Movement
         public void MoveTo(Vector3 destination)
         {
             agent.destination = destination;
+            agent.isStopped = false;
         }
 
         private void UpdateAnimator()
