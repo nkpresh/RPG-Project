@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Combat;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,29 +23,18 @@ namespace RPG.Movement
 
 
             UpdateAnimator();
-            //Debug.DrawRay(lastRay.origin, lastRay.direction*100);
-            //agent.destination=target.position;
-            // if (Vector3.Distance(transform.position, target.position) <= 2)
-            // {
-            //     Stop();
-            // }
+        }
+
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
         }
 
         public void Stop()
         {
             agent.isStopped = true;
         }
-
-        // private void MoveToCursor()
-        // {
-        //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     RaycastHit hit;
-        //     bool hasHit = Physics.Raycast(ray, out hit);
-        //     if (hasHit)
-        //     {
-        //         MoveTo(hit.point);
-        //     }
-        // }
 
         public void MoveTo(Vector3 destination)
         {
